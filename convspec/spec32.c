@@ -506,16 +506,16 @@ static void output_asm_constructor( const char *constructor )
         {
         case CPU_x86:
         case CPU_x86_64:
-            output( "\n\t.section \".init\",\"ax\"\n" );
+            output( "\n\t.section .init,\"ax\"\n" );
             output( "\tcall %s\n", asm_name(constructor) );
             break;
         case CPU_ARM:
-            output( "\n\t.section \".text\",\"ax\"\n" );
+            output( "\n\t.section .text,\"ax\"\n" );
             output( "\tblx %s\n", asm_name(constructor) );
             break;
         case CPU_ARM64:
         case CPU_POWERPC:
-            output( "\n\t.section \".init\",\"ax\"\n" );
+            output( "\n\t.section .init,\"ax\"\n" );
             output( "\tbl %s\n", asm_name(constructor) );
             break;
         }
@@ -544,7 +544,7 @@ void output_module( DLLSPEC *spec )
         output( "\t.space 65536\n" );
         break;
     case PLATFORM_SOLARIS:
-        output( "\n\t.section \".text\",\"ax\"\n" );
+        output( "\n\t.section .text,\"ax\"\n" );
         output( "__wine_spec_pe_header:\n" );
         output( "\t.skip %u\n", 65536 + page_size );
         break;
@@ -553,16 +553,16 @@ void output_module( DLLSPEC *spec )
         {
         case CPU_x86:
         case CPU_x86_64:
-            output( "\n\t.section \".init\",\"ax\"\n" );
+            output( "\n\t.section .init,\"ax\"\n" );
             output( "\tjmp 1f\n" );
             break;
         case CPU_ARM:
-            output( "\n\t.section \".text\",\"ax\"\n" );
+            output( "\n\t.section .text,\"ax\"\n" );
             output( "\tb 1f\n" );
             break;
         case CPU_ARM64:
         case CPU_POWERPC:
-            output( "\n\t.section \".init\",\"ax\"\n" );
+            output( "\n\t.section .init,\"ax\"\n" );
             output( "\tb 1f\n" );
             break;
         }
